@@ -1,0 +1,21 @@
+[
+    {
+      "name": "ProjectA",
+      "description": "A revolutionary product for solving complex problems.",
+      "solution": "Cutting-edge technology and innovative algorithms.",
+      "key": 1
+    },
+    {
+      "key": 2,
+      "name": "ProjectB",
+      "description": "An efficient tool for streamlining workflows.",
+      "solution": "Simple and intuitive user interface, automation features."
+    },
+    {
+      "key": 3,
+      "name": "ProjectC",
+      "description": "A platform for collaborative project management.",
+      "solution": "Real-time collaboration, task tracking, and reporting."
+    }
+]
+  

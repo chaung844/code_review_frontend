@@ -9,9 +9,10 @@ import axios from "axios";
 
 interface CodeInputProps {
     onFileSubmit: (submissionStatus: boolean) => void;
+    extraClassName: string;
 }
 
-export function CodeInput({ onFileSubmit }: CodeInputProps) {
+export function CodeInput({ onFileSubmit, extraClassName }: CodeInputProps) {
     const [ codeData, setCodeData ] = useState<string>("");
     const [ languageData, setLanguageData ] = useState<string>("c++");
 
@@ -40,7 +41,7 @@ export function CodeInput({ onFileSubmit }: CodeInputProps) {
     }
 
     return (
-        <div className="col-span-3 gap-y-4 flex flex-col items-center">
+        <div className={`${extraClassName} gap-y-4 flex flex-col items-center`}>
             <ShowInstructions />
             <div className="self-start space-x-5">
                 <LanguageSelection onLanguageChange={handleLanguageChange}/>
