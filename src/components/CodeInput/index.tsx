@@ -10,9 +10,10 @@ import axios from "axios";
 interface CodeInputProps {
     onFileSubmit: (submissionStatus: boolean) => void;
     extraClassName: string;
+    onGetResponseData: (responseData: string) => void;
 }
 
-export function CodeInput({ onFileSubmit, extraClassName }: CodeInputProps) {
+export function CodeInput({ onFileSubmit, extraClassName, onGetResponseData }: CodeInputProps) {
     const [ codeData, setCodeData ] = useState<string>("");
     const [ languageData, setLanguageData ] = useState<string>("c++");
 
@@ -30,9 +31,7 @@ export function CodeInput({ onFileSubmit, extraClassName }: CodeInputProps) {
             language: languageData
         })
         .then((response) => {
-            //replace with proper output
-            console.log(response.data.code);
-            console.log(response.data.language);
+            onGetResponseData(response.data);
         })
         .catch(error => {
             console.error(error);
@@ -48,7 +47,7 @@ export function CodeInput({ onFileSubmit, extraClassName }: CodeInputProps) {
                 <FileUpload onFileUpload={handleFileUpload} />
             </div>
             <CodeEditor data={codeData}/>
-            <Button htmlType="submit" className="w-min items-center text-center" onClick={handleCodeSubmission}>Submit</Button>
+            <Button htmlType="submit" className="w-min items-center text-center font-extrabold" onClick={handleCodeSubmission}>Submit</Button>
         </div>
     )
 }
