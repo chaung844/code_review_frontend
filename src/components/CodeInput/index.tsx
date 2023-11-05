@@ -24,8 +24,7 @@ export function CodeInput({ onFileSubmit }: CodeInputProps) {
     }
 
     function handleCodeSubmission() {
-        //replace url later
-        axios.post("https://jsonplaceholder.typicode.com/posts", {
+        axios.post("10.0.1.4:8080", {
             code: codeData,
             language: languageData
         })
