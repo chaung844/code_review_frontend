@@ -24,7 +24,7 @@ export function CodeInput({ onFileSubmit }: CodeInputProps) {
     }
 
     function handleCodeSubmission() {
-        axios.post("10.0.1.4:8080", {
+        axios.post("10.0.1.4:8080/analyze", {
             code: codeData,
             language: languageData
         })
