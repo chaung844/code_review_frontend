@@ -1,10 +1,9 @@
-import React from 'react';
 import { NavBar } from './components/NavBar';
 import { Layout } from 'antd';
 import { Hero } from './components/Hero';
 import { VulnerabilityCheck } from './components/VulnerabilityCheck';
 
-const { Header, Footer, Content } = Layout;
+const { Footer, Content } = Layout;
 
 function App() {
   return (

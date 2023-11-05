@@ -1,7 +1,6 @@
 import { Upload, Button, UploadFile, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import { UploadChangeParam } from "antd/es/upload";
-import { useState } from "react";
+
 
 
 interface FileUploadProps {
