@@ -24,14 +24,10 @@ export function CodeInput({ onFileSubmit }: CodeInputProps) {
     }
 
     function handleCodeSubmission() {
-        const data = {
+        axios.post("http://10.0.1.4:8080/analyze", {
             code: codeData,
             language: languageData
-        }
-        const headers = {
-            "Access-Control-Allow-Origin": "*"
-        }
-        axios.post("http://10.0.1.4:8080/analyze", data, headers)
+        })
         .then((response) => {
             //replace with proper output
             console.log(response.data.code);
