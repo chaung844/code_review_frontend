@@ -1,6 +1,6 @@
 import { Select } from "antd";
 
-
+ 
 const languageOptions = [
     {
         value: "c++",
@@ -28,16 +28,22 @@ const languageOptions = [
     },
 ]
 
+
 function filterOption(input: string, option?: {label: string, value: string }) {
     return (option?.label ?? "").toLowerCase().includes(input.toLowerCase()); 
 }
 
-export function LanguageSelection() {
+interface LanguageSelectionProps {
+    onLanguageChange: (language: string) => void;
+}
+
+export function LanguageSelection({ onLanguageChange }: LanguageSelectionProps) {
     return (
         <Select 
+            defaultValue="c++"
             className="space-x-4 self-start w-[200px]"
             showSearch
-            placeholder="Select a language"
+            onChange={value => onLanguageChange(value)}
             options={languageOptions}
             filterOption={filterOption}
         />

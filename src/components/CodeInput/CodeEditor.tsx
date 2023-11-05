@@ -10,7 +10,7 @@ interface CodeEditorProps {
 }
 
 export function CodeEditor({ data }: CodeEditorProps) {
-    const [ code, setCode ] = useState("");
+    const [ code, setCode ] = useState<string>("");
 
     function handleChange(e: ReactCodeMirrorProps["value"]) {
         setCode(e || "");

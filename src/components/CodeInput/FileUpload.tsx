@@ -9,7 +9,6 @@ interface FileUploadProps {
 }
 
 export function FileUpload( { onFileUpload }: FileUploadProps) {
-    const [ fileContent, setFileContent ] = useState<string | null>(null);
 
     function beforeUpload(file: File) {
         const reader = new FileReader();
@@ -18,7 +17,6 @@ export function FileUpload( { onFileUpload }: FileUploadProps) {
             if (result) {
                 if (typeof result === "string") {
                     const content = result;
-                    setFileContent(content);
                     onFileUpload(content);
                 } else {
                     const content = new TextDecoder().decode(result as ArrayBuffer);
@@ -31,13 +29,9 @@ export function FileUpload( { onFileUpload }: FileUploadProps) {
         return false;
     }
     
-    function handleChange(info: UploadChangeParam<UploadFile>) {
-        console.log(info.file.lastModifiedDate);
-    }
     return (
         <Upload 
             beforeUpload={beforeUpload}
-            onChange={handleChange}
             maxCount={1}
             className="self-start"
             accept=".py, .cpp, .java, .c, .js, .ts"

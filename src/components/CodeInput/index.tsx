@@ -7,33 +7,47 @@ import { useState } from "react";
 import axios from "axios";
 
 
-export function CodeInput() {
-    const [data, setData] = useState<string>("");
+interface CodeInputProps {
+    onFileSubmit: (submissionStatus: boolean) => void;
+}
+
+export function CodeInput({ onFileSubmit }: CodeInputProps) {
+    const [ codeData, setCodeData ] = useState<string>("");
+    const [ languageData, setLanguageData ] = useState<string>("c++");
 
     function handleFileUpload(fileContent: string) {
-        setData(fileContent);
+        setCodeData(fileContent);
+    }
+
+    function handleLanguageChange(language: string) {
+        setLanguageData(language);
     }
 
     function handleCodeSubmission() {
         //replace url later
         axios.post("https://jsonplaceholder.typicode.com/posts", {
-            code: data
+            code: codeData,
+            language: languageData
         })
         .then((response) => {
+            //replace with proper output
             console.log(response.data.code);
+            console.log(response.data.language);
         })
         .catch(error => {
             console.error(error);
         })
+        onFileSubmit(true);
     }
+
     return (
         <div className="col-span-3 gap-y-4 flex flex-col items-center">
             <ShowInstructions />
             <div className="self-start space-x-5">
-                <LanguageSelection />
+                <LanguageSelection onLanguageChange={handleLanguageChange}/>
                 <FileUpload onFileUpload={handleFileUpload} />
             </div>
-            <CodeEditor data={data}/>
+            <CodeEditor data={codeData}/>
             <Button htmlType="submit" className="w-min items-center text-center" onClick={handleCodeSubmission}>Submit</Button>
         </div>
     )
